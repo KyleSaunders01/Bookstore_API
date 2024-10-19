@@ -1,0 +1,48 @@
+{
+  "name": "bookstore_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "tsc",
+    "start": "ts-node-dev src/index.ts",
+    "test": "PORT=4000 NODE_ENV=test mocha --exit -r ts-node/register 'tests/**/*.test.ts'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/chai": "^4.3.4",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/express-validator": "^3.0.0",
+    "@types/mocha": "^10.0.9",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.7.6",
+    "@types/sinon": "^17.0.3",
+    "@types/sinon-chai": "^4.0.0",
+    "@types/supertest": "^6.0.2",
+    "chai": "^4.5.0",
+    "cors": "^2.8.5",
+    "helmet": "^8.0.0",
+    "mocha": "^10.7.3",
+    "morgan": "^1.10.0",
+    "sinon": "^7.5.0",
+    "sinon-chai": "^3.3.0",
+    "supertest": "^7.0.0",
+    "ts-mocha": "^10.0.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "express-validator": "^7.2.0",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "typeorm": "^0.2.45"
+  }
+}

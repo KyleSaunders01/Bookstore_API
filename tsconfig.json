@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,  // Required for strictPropertyInitialization
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react", // You might want to change this if using something other than React
+    "jsxFactory": "React.createElement", // Set correctly for React
+    "jsxFragmentFactory": "React.Fragment",
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "./src",  // Set this to the root of your source files
+    "outDir": "./dist",  // Set this to your output directory
+    "resolveJsonModule": true,  // Allows importing JSON files
+    "noEmitOnError": true,
+    "sourceMap": true,  // Enable source maps for debugging
+    "moduleResolution": "node",
+    "baseUrl": "./",  // Adjust this as per your project structure
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"]
+    }
+  },
+  "include": ["src/**/*.ts"],  // Adjust this to include your source files
+  "exclude": ["node_modules", "dist"]  // Exclude these directories
+}
