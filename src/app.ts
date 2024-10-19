@@ -5,11 +5,9 @@ import cors from 'cors';
 import { BookService } from './services/bookService';
 import { BookRepository } from './repositories/bookRepository';
 import { AppConnection } from './infrastructure/typeorm.config';
-import bookRoutes from './routes/bookRoutes'; // Import the modified routes
+import bookRoutes from './routes/bookRoutes';
 
-// Function to create and configure the Express app
 export const createApp = async (): Promise<Application> => {
-    // Initialize the Express app
     const app: Application = express();
 
     // Middleware configuration
@@ -18,12 +16,10 @@ export const createApp = async (): Promise<Application> => {
     app.use(helmet());
     app.use(cors());
 
-    // Use Morgan for request logging in development mode
     if (process.env.NODE_ENV === 'development') {
         app.use(morgan('dev'));
     }
 
-    // Initialize the connection, repository, and service
     const connection = await AppConnection;
     if (!connection.isConnected) {
         await connection.connect();
@@ -32,7 +28,6 @@ export const createApp = async (): Promise<Application> => {
     const bookRepository = new BookRepository(connection);
     const bookService = new BookService(bookRepository);
 
-    // Routes
     app.use('/books', bookRoutes(bookService)); // Pass bookService to bookRoutes
 
     // 404 Route Handler

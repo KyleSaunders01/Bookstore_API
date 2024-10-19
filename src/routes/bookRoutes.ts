@@ -8,7 +8,6 @@ const router = express.Router();
 export default (bookService: BookService) => {
     const controller = bookController(bookService);
 
-    // POST /books - Create a new book
     router.post(
         '/',
         [
@@ -22,7 +21,6 @@ export default (bookService: BookService) => {
         controller.createBook
     );
 
-    // GET /books/discounted-price?genre=&discount= - Get total discounted price by genre
     router.get(
         '/discounted-price',
         [
@@ -34,10 +32,8 @@ export default (bookService: BookService) => {
         controller.getTotalDiscountedPriceByGenre
     );
 
-    // GET /books - Get all books
     router.get('/', controller.getAllBooks);
 
-    // PUT /books/:id - Update a book by ID
     router.put(
         '/:id',
         [
@@ -52,7 +48,6 @@ export default (bookService: BookService) => {
         controller.updateBook
     );
 
-    // DELETE /books/:id - Delete a book by ID
     router.delete(
         '/:id',
         [
@@ -61,7 +56,6 @@ export default (bookService: BookService) => {
         controller.deleteBook
     );
 
-    // GET /books/:id - Get a book by ID
     router.get(
         '/:id',
         [

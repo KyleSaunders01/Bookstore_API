@@ -8,7 +8,6 @@ export class BookService {
         this.bookRepository = bookRepository;
     }
 
-    // Create a new book
     async createBook(bookData: Partial<Book>): Promise<Book> {
         try {
             return await this.bookRepository.create(bookData);
@@ -18,7 +17,6 @@ export class BookService {
         }
     }
 
-    // Find a book by its ID
     async getBookById(id: number): Promise<Book | undefined> {
         try {
             const book = await this.bookRepository.findById(id);
@@ -32,7 +30,6 @@ export class BookService {
         }
     }
 
-    // Update a book by its ID
     async updateBook(id: number, updatedBook: Partial<Book>): Promise<Book | undefined> {
         try {
             const updatedBookResult = await this.bookRepository.update(id, updatedBook);
@@ -46,7 +43,6 @@ export class BookService {
         }
     }
 
-    // Delete a book by its ID
     async deleteBook(id: number): Promise<Book | undefined> {
         try {
             // Check if the book exists
@@ -64,7 +60,6 @@ export class BookService {
         }
     }
 
-    // Find books by genre
     async getBooksByGenre(genre: string): Promise<Book[]> {
         try {
             return await this.bookRepository.findByGenre(genre);
@@ -74,7 +69,6 @@ export class BookService {
         }
     }
 
-    // Get all books
     async getAllBooks(): Promise<Book[]> {
         try {
             return await this.bookRepository.getAllBooks();
@@ -84,7 +78,6 @@ export class BookService {
         }
     }
 
-    // Calculate Total Discounted Price of Book by Genre using a Discount Percentage
     async getTotalDiscountedPriceByGenre(genre: string, discountPercentage: number): Promise<number> {
         try {
             const books = await this.getBooksByGenre(genre);

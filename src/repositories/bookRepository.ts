@@ -8,7 +8,6 @@ export class BookRepository {
         this.bookRepo = connection.getRepository(Book);
     }
 
-    // Create a new book
     async create(bookData: Partial<Book>): Promise<Book> {
         try {
             const book = this.bookRepo.create(bookData);
@@ -19,7 +18,6 @@ export class BookRepository {
         }
     }
 
-    // Find a book by its ID
     async findById(id: number): Promise<Book | undefined> {
         try {
             return await this.bookRepo.findOne({ where: { id } });
@@ -29,7 +27,6 @@ export class BookRepository {
         }
     }
 
-    // Update a book by its ID
     async update(id: number, updatedData: Partial<Book>): Promise<Book | undefined> {
         try {
             await this.bookRepo.update(id, updatedData);
@@ -40,7 +37,6 @@ export class BookRepository {
         }
     }
 
-    // Delete a book by its ID
     async delete(id: number): Promise<void> {
         try {
             await this.bookRepo.delete(id);
@@ -50,7 +46,6 @@ export class BookRepository {
         }
     }
 
-    // Find books by genre
     async findByGenre(genre: string): Promise<Book[]> {
         try {
             return await this.bookRepo.find({ where: { genre } });
@@ -60,7 +55,6 @@ export class BookRepository {
         }
     }
 
-    // Get all books
     async getAllBooks(): Promise<Book[]> {
         try {
             return await this.bookRepo.find();

@@ -8,10 +8,8 @@ describe('Book Service', () => {
     let bookService: BookService;
 
     beforeEach(() => {
-        // Stub the BookRepository
         bookRepositoryStub = sinon.createStubInstance(BookRepository);
 
-        // Initialize the BookService with the stubbed repository
         bookService = new BookService(bookRepositoryStub as unknown as BookRepository);
     });
 
@@ -104,10 +102,8 @@ describe('Book Service', () => {
         it('should delete a book by id', async () => {
             const book = { id: 1, title: 'Delete Book', author: 'Test Author', genre: 'NonFiction', price: 60 };
 
-            // Stub the findById to return the book
             bookRepositoryStub.findById.resolves(book);
 
-            // Stub the delete to resolve successfully
             bookRepositoryStub.delete.resolves();
 
             const result = await bookService.deleteBook(1);
@@ -118,7 +114,7 @@ describe('Book Service', () => {
         });
 
         it('should fail to delete with an invalid id', async () => {
-            // Stub findById to resolve undefined for an invalid ID
+
             bookRepositoryStub.findById.resolves(undefined);
 
             try {
@@ -144,7 +140,6 @@ describe('Book Service', () => {
                 { id: 2, title: 'Genre Book 2', author: 'Test Author 2', genre: 'Fantasy', price: 120 },
             ];
 
-            // Stub the findByGenre to return the books
             bookRepositoryStub.findByGenre.resolves(books);
 
             const result = await bookService.getBooksByGenre('Fantasy');
@@ -153,7 +148,6 @@ describe('Book Service', () => {
         });
 
         it('should return an empty array if genre does not exist', async () => {
-            // Stub findByGenre to resolve empty array if genre does not exist
             bookRepositoryStub.findByGenre.resolves([]);
 
             const result = await bookService.getBooksByGenre('NonExistingGenre');
@@ -189,7 +183,6 @@ describe('Book Service', () => {
                 { id: 2, title: 'All Book 2', author: 'Test Author', genre: 'Science', price: 200 },
             ];
 
-            // Stub getAllBooks to resolve books
             bookRepositoryStub.getAllBooks.resolves(books);
 
             const result = await bookService.getAllBooks();

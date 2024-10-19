@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { BookService } from "../services/bookService";
-import { validationResult } from 'express-validator';
 
 export const bookController = (bookService: BookService) => ({
 

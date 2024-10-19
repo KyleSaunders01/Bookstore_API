@@ -10,16 +10,12 @@ describe('BookRepository', () => {
     let bookRepository: BookRepository;
 
     beforeEach(() => {
-        // Stub the Connection
         connectionStub = sinon.createStubInstance(Connection);
 
-        // Stub the Repository<Book> with proper typing
         bookRepoStub = sinon.createStubInstance(Repository) as sinon.SinonStubbedInstance<Repository<Book>>;
 
-        // Correctly cast the return value of getRepository to Repository<Book>
         (connectionStub.getRepository as sinon.SinonStub).returns(bookRepoStub as unknown as Repository<Book>);
 
-        // Create the BookRepository instance using the stubbed connection
         bookRepository = new BookRepository(connectionStub as unknown as Connection);
     });
 
@@ -111,18 +107,14 @@ describe('BookRepository', () => {
         it('should delete a book by id', async () => {
             const book = { id: 1, title: 'Test Book', author: 'Author', genre: 'Fiction', price: 100 };
 
-            // Stub the delete to resolve without needing to find the book
             bookRepoStub.delete.resolves();
 
-            // Call the delete method
             await bookRepository.delete(1);
 
-            // Ensure delete was called with the correct id
             expect(bookRepoStub.delete).to.have.been.calledWith(1);
         });
 
         it('should throw an error if deleting the book fails', async () => {
-            // Stub delete to throw an error
             bookRepoStub.delete.rejects(new Error('Database error'));
 
             try {

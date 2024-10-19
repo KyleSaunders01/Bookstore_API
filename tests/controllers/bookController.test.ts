@@ -40,7 +40,6 @@ describe('Book Controller', () => {
 
             req.body = { title: 'Test Book', author: 'Test Author', genre: 'Fiction', price: 100 };
 
-            // Stub the service response
             mockBookService.createBook.resolves(sampleBook);
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -56,7 +55,6 @@ describe('Book Controller', () => {
 
             req.body = {};
 
-            // Simulate an error
             mockBookService.createBook.rejects(new Error('Database error'));
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -77,7 +75,6 @@ describe('Book Controller', () => {
 
             req.params = { id: '1' };
 
-            // Stub the service response
             mockBookService.getBookById.resolves(sampleBook);
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -94,7 +91,6 @@ describe('Book Controller', () => {
 
             req.params = { id: '1' };
 
-            // Simulate a not-found response
             mockBookService.getBookById.resolves(undefined);
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -110,7 +106,6 @@ describe('Book Controller', () => {
 
             req.params = { id: '1' };
 
-            // Simulate an error
             mockBookService.getBookById.rejects(new Error('Database error'));
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -132,7 +127,6 @@ describe('Book Controller', () => {
             req.params = { id: '1' };
             req.body = { title: 'Updated Title', author: 'Test Author', genre: 'Fiction', price: 80 };
 
-            // Stub the service response
             mockBookService.updateBook.resolves({
                 id: 1,
                 title: 'Updated Title',
@@ -200,7 +194,6 @@ describe('Book Controller', () => {
 
             req.params = { id: '1' };
 
-            // Stub the service response
             mockBookService.deleteBook.resolves(sampleBook);
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -217,7 +210,6 @@ describe('Book Controller', () => {
 
             req.params = { id: '1' };
 
-            // Simulate a not-found response
             mockBookService.deleteBook.resolves(undefined);
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -233,7 +225,6 @@ describe('Book Controller', () => {
 
             req.params = { id: '1' };
 
-            // Simulate an error
             mockBookService.deleteBook.rejects(new Error('Database error'));
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -254,7 +245,6 @@ describe('Book Controller', () => {
 
             req = {};
 
-            // Stub the service response
             mockBookService.getAllBooks.resolves([sampleBook]);
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
@@ -271,7 +261,6 @@ describe('Book Controller', () => {
 
             req = {};
 
-            // Simulate an error
             mockBookService.getAllBooks.rejects(new Error('Database error'));
             (res.status as sinon.SinonStub).returns(res);
             (res.json as sinon.SinonStub).returns(res);
