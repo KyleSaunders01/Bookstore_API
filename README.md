@@ -30,7 +30,7 @@ Make sure you have these installed on your machine before proceeding.
 To install the project, clone the repository and install the necessary dependencies:
 
 ```bash
-git clone <your-repo-url>
+git clone <https://github.com/KyleSaunders01/Bookstore_API.git>
 cd bookstore-api
 npm install
 ```
